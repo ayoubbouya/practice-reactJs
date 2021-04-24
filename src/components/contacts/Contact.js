@@ -4,17 +4,17 @@ import "./contact.css"
 
  class Contact extends Component {
     render() {
-        const {name , tele, email } = this.props.data;
+        const {name , tele, email, age } = this.props.data;
         return (
             <div className="card">
                 <div className="card-body">
-                    <h1 className="card-title"> {name}</h1>
-                    <p className="card-text">
+                    <h1 className="card-title"> {name} {age}</h1>
+                    <span className="card-text">
                         <ul className="list-group">
                             <li className="list-group-item">{tele}</li>
                             <li className="list-group-item">{email}</li>
                         </ul>                   
-                    </p>
+                    </span>
                 </div>
             </div>     
         )
@@ -28,9 +28,11 @@ Contact.defaultProps = {
 }
 
 Contact.types = {
-    name: PropTypes.string.isRequired,
-    tele: PropTypes.number.isRequired,
-    email: PropTypes.string
+    data: PropTypes.object.isRequired
+
+    // name: PropTypes.string.isRequired,
+    // // tele: PropTypes.number.isRequired,
+    // // email: PropTypes.string
 }
 
 

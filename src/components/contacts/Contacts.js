@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Contact from './Contact'
+ 
   
 class Contacts extends Component {
     state = {
@@ -10,18 +11,30 @@ class Contacts extends Component {
 
         ]
     }
+
+    deleteContact(id) {
+         const {contacts} = this.state;
+         
+         const newLists = contacts.filter((contact) => contact.id !== id)
+
+         this.setState({
+             contacts : newLists
+         })
+    }
+
     render() {
         const {users} = this.state;
         return (
             <div>
-                {users.map( (contact, i)  => ( 
-                    <Contact  data = {contact} key={i}/> 
+                {users.map( (contact)  => ( 
+                    <Contact  data = {contact} key={contact.id} deleteContactFromChild = {this.deleteContact.bind(this, contact.id)} /> 
+                    
                     // name={contact.name}
                     // tele={contact.tele}
                     // email={contact.email}
                     
                 ))}
-               
+             
             </div>
         )
     }
